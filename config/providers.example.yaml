@@ -1,0 +1,244 @@
+# 复制为 providers.yaml 后填写你自己的 key。
+# 说明：
+# - type=openai_compatible: 走 OpenAI 协议透传
+# - type=anthropic: 走内置 Anthropic 适配
+# - api_prefix 默认 /v1；若厂商不是 /v1，请改这里（例如 /openai/v1、/compatible-mode/v1）
+default_provider: openai
+
+providers:
+  # ===== 国际主流 =====
+  openai:
+    type: openai_compatible
+    base_url: https://api.openai.com
+    api_prefix: /v1
+    api_key: ${OPENAI_API_KEY}
+    supports_responses: true
+
+  anthropic:
+    type: anthropic
+    base_url: https://api.anthropic.com
+    api_key: ${ANTHROPIC_API_KEY}
+    anthropic_version: "2023-06-01"
+    supports_responses: false
+
+  google_gemini_openai:
+    type: openai_compatible
+    base_url: https://generativelanguage.googleapis.com
+    api_prefix: /v1beta/openai
+    api_key: ${GEMINI_API_KEY}
+    supports_responses: false
+
+  groq:
+    type: openai_compatible
+    base_url: https://api.groq.com
+    api_prefix: /openai/v1
+    api_key: ${GROQ_API_KEY}
+    supports_responses: false
+
+  together:
+    type: openai_compatible
+    base_url: https://api.together.xyz
+    api_prefix: /v1
+    api_key: ${TOGETHER_API_KEY}
+    supports_responses: false
+
+  mistral:
+    type: openai_compatible
+    base_url: https://api.mistral.ai
+    api_prefix: /v1
+    api_key: ${MISTRAL_API_KEY}
+    supports_responses: false
+
+  perplexity:
+    type: openai_compatible
+    base_url: https://api.perplexity.ai
+    api_prefix: /
+    api_key: ${PERPLEXITY_API_KEY}
+    supports_responses: false
+
+  xai:
+    type: openai_compatible
+    base_url: https://api.x.ai
+    api_prefix: /v1
+    api_key: ${XAI_API_KEY}
+    supports_responses: false
+
+  fireworks:
+    type: openai_compatible
+    base_url: https://api.fireworks.ai
+    api_prefix: /inference/v1
+    api_key: ${FIREWORKS_API_KEY}
+    supports_responses: false
+
+  cerebras:
+    type: openai_compatible
+    base_url: https://api.cerebras.ai
+    api_prefix: /v1
+    api_key: ${CEREBRAS_API_KEY}
+    supports_responses: false
+
+  sambanova:
+    type: openai_compatible
+    base_url: https://api.sambanova.ai
+    api_prefix: /v1
+    api_key: ${SAMBANOVA_API_KEY}
+    supports_responses: false
+
+  nvidia_nim:
+    type: openai_compatible
+    base_url: https://integrate.api.nvidia.com
+    api_prefix: /v1
+    api_key: ${NVIDIA_NIM_API_KEY}
+    supports_responses: false
+
+  # ===== 国内主流 =====
+  deepseek:
+    type: openai_compatible
+    base_url: https://api.deepseek.com
+    api_prefix: /v1
+    api_key: ${DEEPSEEK_API_KEY}
+    supports_responses: false
+
+  qwen:
+    type: openai_compatible
+    base_url: https://dashscope.aliyuncs.com
+    api_prefix: /compatible-mode/v1
+    api_key: ${QWEN_API_KEY}
+    supports_responses: false
+
+  moonshot:
+    type: openai_compatible
+    base_url: https://api.moonshot.cn
+    api_prefix: /v1
+    api_key: ${MOONSHOT_API_KEY}
+    supports_responses: false
+
+  zhipu:
+    type: openai_compatible
+    base_url: https://open.bigmodel.cn
+    api_prefix: /api/paas/v4
+    api_key: ${ZHIPU_API_KEY}
+    supports_responses: false
+
+  baichuan:
+    type: openai_compatible
+    base_url: https://api.baichuan-ai.com
+    api_prefix: /v1
+    api_key: ${BAICHUAN_API_KEY}
+    supports_responses: false
+
+  minimax:
+    type: openai_compatible
+    base_url: https://api.minimax.chat
+    api_prefix: /v1
+    api_key: ${MINIMAX_API_KEY}
+    supports_responses: false
+
+  yi:
+    type: openai_compatible
+    base_url: https://api.lingyiwanwu.com
+    api_prefix: /v1
+    api_key: ${YI_API_KEY}
+    supports_responses: false
+
+  hunyuan:
+    type: openai_compatible
+    base_url: https://api.hunyuan.cloud.tencent.com
+    api_prefix: /v1
+    api_key: ${HUNYUAN_API_KEY}
+    supports_responses: false
+
+  siliconflow:
+    type: openai_compatible
+    base_url: https://api.siliconflow.cn
+    api_prefix: /v1
+    api_key: ${SILICONFLOW_API_KEY}
+    supports_responses: false
+
+  volcengine_ark:
+    type: openai_compatible
+    base_url: https://ark.cn-beijing.volces.com
+    api_prefix: /api/v3
+    api_key: ${VOLCENGINE_ARK_API_KEY}
+    supports_responses: false
+
+  tencent_lkeap:
+    type: openai_compatible
+    base_url: https://api.lkeap.cloud.tencent.com
+    api_prefix: /v1
+    api_key: ${LKEAP_API_KEY}
+    supports_responses: false
+
+  # ===== 聚合网关/中转平台（按需启用） =====
+  openrouter:
+    type: openai_compatible
+    base_url: https://openrouter.ai
+    api_prefix: /api/v1
+    api_key: ${OPENROUTER_API_KEY}
+    supports_responses: false
+    extra_headers:
+      HTTP-Referer: ${OPENROUTER_SITE_URL}
+      X-Title: ${OPENROUTER_APP_NAME}
+
+  oneapi:
+    type: openai_compatible
+    base_url: ${ONEAPI_BASE_URL}
+    api_prefix: /v1
+    api_key: ${ONEAPI_API_KEY}
+    supports_responses: false
+
+  newapi:
+    type: openai_compatible
+    base_url: ${NEWAPI_BASE_URL}
+    api_prefix: /v1
+    api_key: ${NEWAPI_API_KEY}
+    supports_responses: false
+
+model_provider_map:
+  # OpenAI
+  gpt-*: openai
+  o1*: openai
+  o3*: openai
+  o4*: openai
+
+  # Anthropic
+  claude-*: anthropic
+
+  # Google Gemini (OpenAI compatibility)
+  gemini-*: google_gemini_openai
+
+  # 国际模型
+  grok-*: xai
+  sonar-*: perplexity
+  mistral-*: mistral
+  pixtral-*: mistral
+  command-*: together
+  qwen2.5-*: together
+  meta-llama/*: together
+  accounts/fireworks/models/*: fireworks
+  llama-3.1-*: nvidia_nim
+
+  # 国内模型
+  deepseek-*: deepseek
+  qwen-*: qwen
+  moonshot-*: moonshot
+  glm-*: zhipu
+  baichuan-*: baichuan
+  abab-*: minimax
+  yi-*: yi
+  hunyuan-*: hunyuan
+  doubao-*: volcengine_ark
+
+  # 聚合
+  openrouter/*: openrouter
+
+# 模型级回退链（可选）：
+# - 自动路由时，先按 model_provider_map 找主 provider
+# - 若主 provider 离线/不支持端点，再按这里的顺序回退
+# - 若这里也不可用，最终走 default_provider + 全局兜底
+model_fallbacks:
+  deepseek-*: [openrouter, openai]
+  qwen-*: [openrouter, openai]
+  moonshot-*: [openrouter, openai]
+  claude-*: [openrouter, openai]
+  gpt-*: [openrouter]
